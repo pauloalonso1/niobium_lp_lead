@@ -20,14 +20,17 @@ const ComingSoon = () => {
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({ email }),
       });
 
       toast({
         title: 'Obrigado!',
         description: 'Você será notificado quando estivermos prontos.',
       });
+
       setEmail('');
     } catch (err) {
       toast({
@@ -52,7 +55,6 @@ const ComingSoon = () => {
             />
           </div>
 
-          {/* Coming Soon com efeito de brilho */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <ShinyText
               text="Coming Soon"
