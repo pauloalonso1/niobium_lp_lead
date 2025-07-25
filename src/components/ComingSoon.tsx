@@ -28,52 +28,61 @@ const ComingSoon = () => {
 
   return (
     <div className="relative min-h-screen bg-background overflow-hidden">
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0 bg-grid-pattern bg-grid animate-grid-move opacity-10" />
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-accent/5" />
-      
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-float opacity-30" />
-      <div className="absolute top-40 right-32 w-1 h-1 bg-primary rounded-full animate-float opacity-20" style={{ animationDelay: '1s' }} />
-      <div className="absolute bottom-32 left-40 w-1 h-1 bg-primary rounded-full animate-float opacity-25" style={{ animationDelay: '2s' }} />
-      <div className="absolute bottom-40 right-20 w-2 h-2 bg-primary rounded-full animate-float opacity-15" style={{ animationDelay: '0.5s' }} />
+      {/* Grid Background */}
+      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-5" />
       
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8">
-        <div className="w-full max-w-lg mx-auto text-center space-y-12">
+        <div className="w-full max-w-md mx-auto text-center space-y-8">
           
           {/* Logo */}
           <div className="animate-fade-in">
             <img 
-              src="/lovable-uploads/571e4cf9-aebd-4657-b2a2-eac7261cdfba.png" 
-              alt="Logo" 
-              className="h-16 sm:h-20 md:h-24 mx-auto object-contain"
+              src="/lovable-uploads/000aca86-44a1-482b-bbaf-7e2d20a8fdb5.png" 
+              alt="Niobium Logo" 
+              className="h-12 sm:h-16 mx-auto object-contain mb-12"
             />
           </div>
 
-          {/* Glass Box Email Form */}
-          <Card className="p-6 sm:p-8 w-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Coming Soon Text */}
+          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <h2 className="text-2xl sm:text-3xl font-normal text-foreground mb-8">
+              Coming Soon
+            </h2>
+          </div>
+
+          {/* Email Form */}
+          <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <Input
                   type="email"
-                  placeholder="Digite seu email"
+                  placeholder="Seu melhor email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="text-center text-base sm:text-lg py-4 sm:py-6 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-primary focus:ring-primary/20"
+                  className="w-full text-base py-4 px-6 bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/60 focus:border-primary focus:ring-1 focus:ring-primary/30 rounded-lg"
                   required
                 />
               </div>
               <Button 
                 type="submit" 
-                className="w-full py-4 sm:py-6 text-base sm:text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/20"
+                className="w-full py-4 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-lg"
               >
-                Cadastrar
+                Quero ser notificado
               </Button>
             </form>
-          </Card>
+            
+            <p className="text-sm text-white/60 mt-4">
+              Não enviamos spam. Apenas atualizações importantes.
+            </p>
+          </div>
+
+          {/* Contact Email */}
+          <div className="pt-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <p className="text-sm text-white/50">
+              start@thinkniobium.com
+            </p>
+          </div>
         </div>
       </div>
     </div>
