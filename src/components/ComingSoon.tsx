@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import ShinyText from '@/components/TextAnimations/ShinyText/ShinyText';
-import Orb from '@/components/reactbits/background/orb/Orb'; // ajuste o caminho conforme sua estrutura
+import Orb from '@/components/Orb/Orb'; // ajuste o caminho conforme sua estrutura
 
 const ComingSoon = () => {
   const [email, setEmail] = useState('');
