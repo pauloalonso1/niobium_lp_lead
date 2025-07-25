@@ -3,18 +3,21 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import ShinyText from '@/components/TextAnimations/ShinyText/ShinyText';
-import Orb from '@/components/Orb/Orb'; // ajuste o caminho conforme sua estrutura
 
 const ComingSoon = () => {
   const [email, setEmail] = useState('');
   const { toast } = useToast();
+
+  const GOOGLE_SCRIPT_URL =
+    import.meta.env.VITE_GOOGLE_SCRIPT_URL ||
+    'https://script.google.com/macros/s/AKfycbxURsNciWfPOjJPKNjQb1BHlAlzjKCZasvcIg00Xq4_oKFYrdwSnWcA43vk2YBI0e4nqQ/exec';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbxURsNciWfPOjJPKNjQb1BHlAlzjKCZasvcIg00Xq4_oKFYrdwSnWcA43vk2YBI0e4nqQ/exec', {
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
@@ -39,18 +42,9 @@ const ComingSoon = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Orb como fundo */}
-      <div className="absolute inset-0 z-0">
-        <Orb
-          hoverIntensity={0.5}
-          rotateOnHover={true}
-          hue={140} // ajuste de cor (ex: 140 = verde, 270 = roxo, etc)
-          forceHoverState={false}
-        />
-      </div>
+    <div className="relative min-h-screen bg-background overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-15" />
 
-      {/* Conteúdo principal acima do Orb */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8">
         <div className="w-full max-w-md mx-auto text-center space-y-8">
           <div className="animate-fade-in">
@@ -71,14 +65,16 @@ const ComingSoon = () => {
 
           <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <Input
-                type="email"
-                placeholder="Seu melhor email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full text-base py-4 px-6 bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/60 focus:border-primary focus:ring-1 focus:ring-primary/30 rounded-lg"
-                required
-              />
+              <div>
+                <Input
+                  type="email"
+                  placeholder="Seu melhor email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full text-base py-4 px-6 bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/60 focus:border-primary focus:ring-1 focus:ring-primary/30 rounded-lg"
+                  required
+                />
+              </div>
               <Button
                 type="submit"
                 className="w-full py-4 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-lg"
