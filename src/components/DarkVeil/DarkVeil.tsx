@@ -85,7 +85,7 @@ type Props = {
 };
 
 export default function DarkVeil({
-  hueShift = 85,
+  hueShift = 100,
   noiseIntensity = 0,
   scanlineIntensity = 0,
   speed = 0.5,
