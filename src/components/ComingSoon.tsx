@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { ShinyText } from '@/components/ui/shiny-text';
-import DarkVeil from '@/components/DarkVeil/DarkVeil'; // certifique-se de que o caminho está correto
+import { ShinyText } from '@/components/ui/shiny-text'; // Importação do shiny text
 
 const ComingSoon = () => {
   const [email, setEmail] = useState('');
@@ -40,21 +39,10 @@ const ComingSoon = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden">
-      {/* DarkVeil animado no fundo */}
-      <div className="absolute inset-0 z-0">
-        <DarkVeil
-          hueShift={85}
-          noiseIntensity={0.015}
-          scanlineIntensity={0.04}
-          scanlineFrequency={3.0}
-          warpAmount={0.015}
-          speed={0.5}
-        />
-      </div>
+    <div className="relative min-h-screen bg-background overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-15" />
 
-      {/* Conteúdo principal */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8 text-white">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8">
         <div className="w-full max-w-md mx-auto text-center space-y-8">
           <div className="animate-fade-in">
             <img
@@ -64,6 +52,7 @@ const ComingSoon = () => {
             />
           </div>
 
+          {/* Coming Soon com efeito */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <ShinyText
               text="Coming Soon"
@@ -74,14 +63,16 @@ const ComingSoon = () => {
 
           <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <Input
-                type="email"
-                placeholder="Seu melhor email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full text-base py-4 px-6 bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/60 focus:border-primary focus:ring-1 focus:ring-primary/30 rounded-lg"
-                required
-              />
+              <div>
+                <Input
+                  type="email"
+                  placeholder="Seu melhor email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full text-base py-4 px-6 bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/60 focus:border-primary focus:ring-1 focus:ring-primary/30 rounded-lg"
+                  required
+                />
+              </div>
               <Button
                 type="submit"
                 className="w-full py-4 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-lg"
@@ -96,7 +87,9 @@ const ComingSoon = () => {
           </div>
 
           <div className="pt-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <p className="text-sm text-white/50">start@thinkniobium.com</p>
+            <p className="text-sm text-white/50">
+              start@thinkniobium.com
+            </p>
           </div>
         </div>
       </div>
