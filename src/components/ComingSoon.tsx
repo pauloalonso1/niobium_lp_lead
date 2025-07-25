@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import ShinyText from '@/components/TextAnimations/ShinyText/ShinyText';
-import DarkVeil from '@/components/DarkVeil/DarkVeil'; // ajuste o path se necessário
+import <DarkVeil></DarkVeil> from '@/components/DarkVeil';  
 
 const ComingSoon = () => {
   const [email, setEmail] = useState('');
@@ -43,56 +43,55 @@ const ComingSoon = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-black text-white">
-      {/* DarkVeil BG fixo */}
-      <div className="absolute inset-0 z-0">
-        <DarkVeil
-          hueShift={80} // tom verde-limão sutil
-          noiseIntensity={0.015}
-          scanlineIntensity={0.04}
-          scanlineFrequency={3.0}
-          warpAmount={0.015}
-          speed={0.5}
-        />
-      </div>
+    <div className="relative min-h-screen bg-background overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-15" />
 
-      {/* Conteúdo sobreposto */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 py-12">
-        <div className="w-full max-w-md text-center space-y-8">
-          <img
-            src="/images/0a18f2aa-8bb4-4b7f-a68e-2ea20f5d9ee6.png"
-            alt="Niobium Logo"
-            className="h-12 sm:h-16 mx-auto object-contain"
-          />
-
-          <ShinyText
-            text="Coming Soon"
-            speed={4}
-            className="text-2xl sm:text-3xl font-normal mb-4"
-          />
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              type="email"
-              placeholder="Seu melhor email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full text-base py-4 px-6 bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/60 focus:border-primary focus:ring-1 focus:ring-primary/30 rounded-lg"
-              required
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8">
+        <div className="w-full max-w-md mx-auto text-center space-y-8">
+          <div className="animate-fade-in">
+            <img
+              src="/images/0a18f2aa-8bb4-4b7f-a68e-2ea20f5d9ee6.png"
+              alt="Niobium Logo"
+              className="h-12 sm:h-16 mx-auto object-contain mb-8"
             />
-            <Button
-              type="submit"
-              className="w-full py-4 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-lg"
-            >
-              Quero ser notificado
-            </Button>
-          </form>
+          </div>
 
-          <p className="text-sm text-white/60">
-            Não enviamos spam. Apenas atualizações importantes.
-          </p>
+          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <ShinyText
+              text="Coming Soon"
+              speed={4}
+              className="text-2xl sm:text-3xl font-normal text-foreground mb-8"
+            />
+          </div>
 
-          <p className="text-sm text-white/50">start@thinkniobium.com</p>
+          <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Input
+                  type="email"
+                  placeholder="Seu melhor email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full text-base py-4 px-6 bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/60 focus:border-primary focus:ring-1 focus:ring-primary/30 rounded-lg"
+                  required
+                />
+              </div>
+              <Button
+                type="submit"
+                className="w-full py-4 text-base font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 rounded-lg"
+              >
+                Quero ser notificado
+              </Button>
+            </form>
+
+            <p className="text-sm text-white/60 mt-4">
+              Não enviamos spam. Apenas atualizações importantes.
+            </p>
+          </div>
+
+          <div className="pt-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <p className="text-sm text-white/50">start@thinkniobium.com</p>
+          </div>
         </div>
       </div>
     </div>
