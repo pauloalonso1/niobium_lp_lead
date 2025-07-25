@@ -29,7 +29,7 @@ const ComingSoon = () => {
   return (
     <div className="relative min-h-screen bg-background overflow-hidden">
       {/* Grid Background */}
-      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-5" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-15" />
       
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8">
@@ -38,9 +38,9 @@ const ComingSoon = () => {
           {/* Logo */}
           <div className="animate-fade-in">
             <img 
-              src="/lovable-uploads/000aca86-44a1-482b-bbaf-7e2d20a8fdb5.png" 
+              src="/lovable-uploads/0a18f2aa-8bb4-4b7f-a68e-2ea20f5d9ee6.png" 
               alt="Niobium Logo" 
-              className="h-12 sm:h-16 mx-auto object-contain mb-12"
+              className="h-12 sm:h-16 mx-auto object-contain mb-8"
             />
           </div>
 

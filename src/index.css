@@ -43,7 +43,7 @@ All colors MUST be HSL.
     --gradient-accent: linear-gradient(135deg, hsl(75, 100%, 50%) 0%, hsl(75, 100%, 40%) 100%);
     
     /* Grid pattern */
-    --grid-color: hsl(75, 100%, 50%, 0.05);
+    --grid-color: hsl(0, 0%, 25%); /* #404040 */
     
     --radius: 0.75rem;
 
