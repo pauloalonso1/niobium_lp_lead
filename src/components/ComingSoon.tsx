@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { ShinyText } from '@/components/ui/shiny-text';
+import ShinyText from '@/components/TextAnimations/ShinyText/ShinyText';
 import DarkVeil from '@/components/DarkVeil/DarkVeil'; // certifique-se de que o caminho está correto
 
 const ComingSoon = () => {
