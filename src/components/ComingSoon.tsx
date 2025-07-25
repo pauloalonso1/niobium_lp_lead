@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import ShinyText from '@/components/TextAnimations/ShinyText/ShinyText';
-import <DarkVeil></DarkVeil> from '@/components/DarkVeil';  
 
 const ComingSoon = () => {
   const [email, setEmail] = useState('');
