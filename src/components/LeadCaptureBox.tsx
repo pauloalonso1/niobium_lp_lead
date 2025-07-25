@@ -1,7 +1,7 @@
 // Este arquivo demonstra um componente React para um box de captura de leads.
 // Ele pode ser adicionado ao seu projeto Vite/React e estilizado com Tailwind ou Shadcn UI.
-// O componente utiliza um card para centralizar o conteúdo, captura o email do usuário
-// e envia os dados para um endpoint que você definirá.  Para salvar os leads em
+// O componente utiliza um card para centralizar o conteúdo, captura o e‑mail do usuário
+// e envia os dados para um endpoint que você definirá. Para salvar os leads em
 // uma planilha Google, você pode criar um Google Apps Script que escute requisições
 // POST (veja o README ou instruções fornecidas) e retornar um JSON de sucesso.
 
@@ -14,7 +14,7 @@ import { useToast } from '@/hooks/use-toast';
 /**
  * LeadCaptureBox exibe um formulário simples para captar o e‑mail de um visitante.
  * Ao enviar, ele faz uma requisição POST para um endpoint externo (ex.: Apps Script
- * do Google) que armazena o e‑mail em uma planilha.  Ajuste a constante
+ * do Google) que armazena o e‑mail em uma planilha. Ajuste a constante
  * `GOOGLE_SCRIPT_URL` ou defina a variável de ambiente VITE_GOOGLE_SCRIPT_URL
  * com o endereço do seu script publicado.
  */
@@ -22,9 +22,11 @@ const LeadCaptureBox = () => {
   const [email, setEmail] = useState('');
   const { toast } = useToast();
 
-  // Use variável de ambiente se disponível, senão defina manualmente.
+  // Usa variável de ambiente se disponível; para evitar erro de tipagem
+  // fazemos um cast de import.meta para any. Se a variável não existir,
+  // substitua pela URL do seu Apps Script terminada em /exec.
   const GOOGLE_SCRIPT_URL =
-    import.meta.env.VITE_GOOGLE_SCRIPT_URL ||
+    ((import.meta as any).env?.VITE_GOOGLE_SCRIPT_URL as string | undefined) ||
     'https://script.google.com/macros/s/AKfycbw5ccy7KQcYhfYkrAj80Bg4vT3-HtMQ7-76UtoWU8Fx/exec';
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,7 +34,7 @@ const LeadCaptureBox = () => {
     if (!email) return;
 
     try {
-      // Envie o e‑mail para o Apps Script via POST
+      // Envia o e‑mail para o Apps Script via POST
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors', // evita bloqueio CORS ao chamar o Apps Script
@@ -42,8 +44,8 @@ const LeadCaptureBox = () => {
 
       // Notifica o usuário e limpa o campo
       toast({
-        title: 'Inscrição realizada!',
-        description: 'Você receberá nossas novidades por e‑mail em breve.',
+      title: 'Inscrição realizada!',
+      description: 'Você receberá nossas novidades por e‑mail em breve.',
       });
       setEmail('');
     } catch (err) {
