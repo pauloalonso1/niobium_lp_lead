@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import ShinyText from '@/components/TextAnimations/ShinyText/ShinyText';
 import { Hyperspeed from '@/components/Hyperspeed/';
+import { <Presets></Presets> from '@/components/Hyperspeed/';
 
 const ComingSoon = () => {
   const [email, setEmail] = useState('');
