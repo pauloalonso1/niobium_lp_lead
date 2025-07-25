@@ -52,7 +52,7 @@ const ComingSoon = () => {
           {/* Logo */}
           <div className="animate-fade-in">
             <img
-              src="/lovable-uploads/0a18f2aa-8bb4-4b7f-a68e-2ea20f5d9ee6.png"
+              src="/images/0a18f2aa-8bb4-4b7f-a68e-2ea20f5d9ee6.png"
               alt="Niobium Logo"
               className="h-12 sm:h-16 mx-auto object-contain mb-8"
             />
