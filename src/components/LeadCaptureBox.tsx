@@ -15,14 +15,17 @@ import { useToast } from '@/hooks/use-toast';
  * LeadCaptureBox exibe um formulário simples para captar o e‑mail de um visitante.
  * Ao enviar, ele faz uma requisição POST para um endpoint externo (ex.: Apps Script
  * do Google) que armazena o e‑mail em uma planilha.  Ajuste a constante
- * `GOOGLE_SCRIPT_URL` com o endereço do seu script publicado.
+ * `GOOGLE_SCRIPT_URL` ou defina a variável de ambiente VITE_GOOGLE_SCRIPT_URL
+ * com o endereço do seu script publicado.
  */
 const LeadCaptureBox = () => {
   const [email, setEmail] = useState('');
   const { toast } = useToast();
 
-  // Substitua pelo URL do seu Google Apps Script publicado
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5ccy7KQcYhfYkrAj80Bg4vT3-HtMQ7-76UtoWU8Fx/dev';
+  // Use variável de ambiente se disponível, senão defina manualmente.
+  const GOOGLE_SCRIPT_URL =
+    import.meta.env.VITE_GOOGLE_SCRIPT_URL ||
+    'https://script.google.com/macros/s/AKfycbw5ccy7KQcYhfYkrAj80Bg4vT3-HtMQ7-76UtoWU8Fx/exec';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,25 +33,19 @@ const LeadCaptureBox = () => {
 
     try {
       // Envie o e‑mail para o Apps Script via POST
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors', // evita bloqueio CORS ao chamar o Apps Script
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
 
-      if (response.ok) {
-        toast({
-          title: 'Inscrição realizada!',
-          description: 'Você receberá nossas novidades por e‑mail em breve.',
-        });
-        setEmail('');
-      } else {
-        toast({
-          title: 'Erro ao enviar',
-          description: 'Não foi possível registrar seu contato. Tente novamente.',
-          variant: 'destructive',
-        });
-      }
+      // Notifica o usuário e limpa o campo
+      toast({
+        title: 'Inscrição realizada!',
+        description: 'Você receberá nossas novidades por e‑mail em breve.',
+      });
+      setEmail('');
     } catch (err) {
       console.error(err);
       toast({
