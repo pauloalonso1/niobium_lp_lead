@@ -46,7 +46,7 @@ const ComingSoon = () => {
     <div className="relative min-h-screen w-full overflow-hidden bg-black">
       {/* Fundo animado */}
       <DarkVeil
-        hueShift={140}
+        hueShift={85}
         noiseIntensity={0.02}
         scanlineIntensity={0.05}
         scanlineFrequency={4.0}
