@@ -8,8 +8,7 @@ const LeadCaptureBox = () => {
   const { toast } = useToast();
 
   const GOOGLE_SCRIPT_URL =
-    import.meta.env.VITE_GOOGLE_SCRIPT_URL ||
-    'https://script.google.com/macros/s/AKfycbxURsNciWfPOjJPKNjQb1BHlAlzjKCZasvcIg00Xq4_oKFYrdwSnWcA43vk2YBI0e4nqQ/exec;
+    import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +31,7 @@ const LeadCaptureBox = () => {
         setEmail('');
       } else {
         toast({
-          title: 'Erro ao enviar',
+          title: 'Erro',
           description: result.message,
           variant: 'destructive',
         });
@@ -40,7 +39,7 @@ const LeadCaptureBox = () => {
     } catch (err) {
       toast({
         title: 'Erro de conexão',
-        description: 'Não foi possível se conectar ao servidor.',
+        description: 'Não foi possível conectar ao servidor.',
         variant: 'destructive',
       });
     }
@@ -55,7 +54,6 @@ const LeadCaptureBox = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        className="bg-transparent border border-border/50 focus:ring-primary focus:border-primary"
       />
       <Button type="submit" className="w-full">
         Quero receber novidades
@@ -68,7 +66,3 @@ const LeadCaptureBox = () => {
 };
 
 export default LeadCaptureBox;
-
-return ContentService.createTextOutput(JSON.stringify(response))
-  .setMimeType(ContentService.MimeType.JSON)
-  .setHeader("Access-Control-Allow-Origin", "*");
