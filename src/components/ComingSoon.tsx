@@ -52,7 +52,7 @@ const ComingSoon = () => {
             />
           </div>
 
-          {/* Coming Soon com efeito */}
+          {/* Coming Soon com efeito de brilho */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <ShinyText
               text="Coming Soon"
@@ -87,9 +87,7 @@ const ComingSoon = () => {
           </div>
 
           <div className="pt-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <p className="text-sm text-white/50">
-              start@thinkniobium.com
-            </p>
+            <p className="text-sm text-white/50">start@thinkniobium.com</p>
           </div>
         </div>
       </div>
