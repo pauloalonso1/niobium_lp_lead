@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import ShinyText from '@/components/TextAnimations/ShinyText/ShinyText';
-import DarkVeil from '@/components/DarkVeil/DarkVeil';
+import DarkVeil from '@/components/DarkVeil/DarkVeil'; // Caminho ajustado se necessário
 
 const ComingSoon = () => {
   const [email, setEmail] = useState('');
@@ -44,19 +44,19 @@ const ComingSoon = () => {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-black">
-      {/* Canvas de fundo fixo com z-index inferior */}
-      <div className="absolute inset-0 z-0">
+      {/* Canvas de fundo fixo */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <DarkVeil
-          hueShift={85}
-          noiseIntensity={0.02}
-          scanlineIntensity={0.05}
-          scanlineFrequency={4.0}
-          warpAmount={0.02}
-          speed={0.6}
+          hueShift={85} // Verde-limão suave
+          noiseIntensity={0.015}
+          scanlineIntensity={0.04}
+          scanlineFrequency={3.5}
+          warpAmount={0.015}
+          speed={0.5}
         />
       </div>
 
-      {/* Overlay com conteúdo acima do canvas */}
+      {/* Conteúdo principal acima do fundo */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-12 text-white">
         <div className="w-full max-w-md text-center space-y-8">
           <div className="animate-fade-in">
