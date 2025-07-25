@@ -9,7 +9,9 @@ const ComingSoon = () => {
 
   // Defina aqui a URL do seu Apps Script. 
   // Alternativamente, use import.meta.env.VITE_GOOGLE_SCRIPT_URL para ler do .env
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5ccy7KQcYhfYkrAj80Bg4vT3-HtMQ7-76UtoWU8Fx/exec';
+  const GOOGLE_SCRIPT_URL =
+    import.meta.env.VITE_GOOGLE_SCRIPT_URL ||
+    'https://script.google.com/macros/s/AKfycbw5ccy7KQcYhfYkrAj80Bg4vT3-HtMQ7-76UtoWU8Fx/exec';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -27,7 +27,7 @@ const LeadCaptureBox = () => {
   // substitua pela URL do seu Apps Script terminada em /exec.
   const GOOGLE_SCRIPT_URL =
     ((import.meta as any).env?.VITE_GOOGLE_SCRIPT_URL as string | undefined) ||
-    'https://script.google.com/macros/s/AKfycbw5ccy7KQcYhfYkrAj80Bg4vT3-HtMQ7-76UtoWU8Fx/exec';
+    'https://script.google.com/macros/s/AKfycbwknK-kLjuOah2FPHTqd7JmQ-Kslvr-IqE6ArE40NbEPIOJ7jUjidNShVHVThlrSyT56w/exec';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
