@@ -1,9 +1,5 @@
-/*
-	Installed from https://reactbits.dev/default/
-*/
-
 .shiny-text {
-  color: #b5b5b5a4; /* Adjust this color to change intensity/style */
+  color: #ffffffcc;
   background: linear-gradient(
     120deg,
     rgba(255, 255, 255, 0) 40%,
@@ -13,8 +9,10 @@
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
   display: inline-block;
-  animation: shine 5s linear infinite;
+  animation: shine linear infinite;
 }
 
 @keyframes shine {
