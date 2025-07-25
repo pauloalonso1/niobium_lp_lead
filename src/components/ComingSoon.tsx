@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import ShinyText from '@/components/TextAnimations/ShinyText/ShinyText';
+import Orb from '@/components/reactbits/background/orb/Orb'; // ajuste o caminho conforme sua estrutura
 
 const ComingSoon = () => {
   const [email, setEmail] = useState('');
@@ -38,12 +39,20 @@ const ComingSoon = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-15" />
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Orb como fundo */}
+      <div className="absolute inset-0 z-0">
+        <Orb
+          hoverIntensity={0.5}
+          rotateOnHover={true}
+          hue={140} // ajuste de cor (ex: 140 = verde, 270 = roxo, etc)
+          forceHoverState={false}
+        />
+      </div>
 
+      {/* Conteúdo principal acima do Orb */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8">
         <div className="w-full max-w-md mx-auto text-center space-y-8">
-          {/* Logo */}
           <div className="animate-fade-in">
             <img
               src="/images/0a18f2aa-8bb4-4b7f-a68e-2ea20f5d9ee6.png"
@@ -52,7 +61,6 @@ const ComingSoon = () => {
             />
           </div>
 
-          {/* Título com efeito */}
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <ShinyText
               text="Coming Soon"
@@ -61,7 +69,6 @@ const ComingSoon = () => {
             />
           </div>
 
-          {/* Formulário */}
           <div className="space-y-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <form onSubmit={handleSubmit} className="space-y-4">
               <Input
@@ -85,7 +92,6 @@ const ComingSoon = () => {
             </p>
           </div>
 
-          {/* Rodapé */}
           <div className="pt-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <p className="text-sm text-white/50">start@thinkniobium.com</p>
           </div>
