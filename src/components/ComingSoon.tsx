@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { ShinyText } from '@/components/ui/shiny-text'; // Importação do shiny text
+import ShinyText from '@/components/TextAnimations/ShinyText/ShinyText';
 
 const ComingSoon = () => {
   const [email, setEmail] = useState('');
